@@ -3,9 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Texto</title>
+    <title>Bluebit | Ciberseguridad empresarial</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: #222222;
+        }
+        h1{
+            font-size: 3rem;
+            line-height: 2.7rem;
+        }
+        h2 {
+            text-align: center;
+        }
+        header > div.menu > a{
+            text-decoration: none;
+            color: #111111;
+        }
+        header > div.menu > a:hover {
+            color: #006eff;
+            font-weight: 600;
+        }
+        .section {
+            padding: 0 10em;
+        }
+        header {
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10em;
+        }
+        .logo {
+            height: 25px;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .banner {
+            background-color: #006eff;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            padding: 0 10em;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide.active {
+            display: flex;
+        }
+        .slide img {
+            width: 50%;
+        }
+        .slide-text {
+            width: 50%;
+            color: #fff1f1;
+        }
+        .about{
+            background-color: #006eff;
+        }
+        .partners, .about, .cybersoc {
+            padding: 20px 10em;
+            color: #333333;
+        }
+        .cards {
+            display: flex;
+            justify-content: space-between;
+        }
+        .card {
+            width: 30%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .about {
+            background-color: #006eff;
+            color: #fff1f1;
+        }
+        footer {
+            background-color: #111111;
+            color: #8a8a8a;
+            padding: 20px 10em;
+        }
+        .contenedor {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+            grid-template-rows: auto auto; /* Dos filas de altura automática */
+        }
+
+        .celda {
+            border: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .fila-mezclada {
+            grid-column: span 2; /* Ocupa ambas columnas */
+        }
+        .card > a {
+            text-decoration: none;
+            text-align: center;
+        }
+        .card > a:hover {
+            color: #006eff;
+            font-weight: bold;
+        }
+        .float{
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-color: #25d366;
+            bottom: 20px;
+            right: 20px;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;            
+            z-index: 999;
+        }
+        .fa-whatsapp{
+            font-size: 45px;
+            margin-top: 3px;
+        }
+        .float:hover{
+            background-color: #2bef73;
+        }
+  ul.custom-list {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding-left: 0; /* Elimina el padding por defecto */
+  }
+
+  ul.custom-list li {
+    position: relative;
+    padding-left: 25px; /* Espacio para el ícono */
+  }
+
+  ul.custom-list li::before {
+    content: "\f00c"; /* Código Unicode del ícono de check en Awesome Font */
+    font-family: "Font Awesome 5 Free"; /* Familia de fuentes de Awesome */
+    font-weight: 900; /* Peso de la fuente para el ícono sólido */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #006eff; /* Color del ícono */
+  }        
+        @media (max-width: 768px) {
+            .section, header {
+                padding: 0 2em;
+            }
+            .menu {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+                padding: 10px;
+            }
+            .slide {
+                flex-direction: column;
+            }
+            .slide img, .slide-text {
+                width: 100%;
+            }
+            .cards {
+                flex-direction: column;
+            }
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .banner , footer {
+                padding: 0  1em;
+            }
+            .about{
+                padding: 1em;
+            }
+            h1{
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Presionaste "i" de ICPNA 😊</p>
+    <header>
+        <div class="logo">
+            <div class="logo"><img src="logo-bluebit.svg" height="25" alt="Logo Bluebit"></div>
+        </div>
+        <div class="menu" id="menux">
+            <a href="#">Inicio</a>
+            <a href="#">Servicios</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a>
+            <a href="#">Blog</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    </header>
+    <div class="banner">
+        <div class="slide active">
+            <div class="slide-text">
+                <h1>Somos líderes en soluciones de Ciberseguridad</h1>
+                <p>Tenemos la solución antimalware de clase mundial que necesitas.</p>
+            </div>
+            <!--img src="https://picsum.photos/id/27/680" alt="Ciberseguridad"-->
+            <img src="img/banner1.png" alt="Ciberseguridad">
+        </div>
+        <div class="slide">
+            <div class="slide-text">
+                <h1>Somos Pioneros en Ciberresiliencia</h1>
+                <p>Inteligencia proactiva frente a amenazas y seguridad integral.</p>
+            </div>
+            <img src="img/banner2.png" alt="Tecnología">
+        </div>
+    </div>
+    <div class="section partners">
+        <h2>Nuestros Partners</h2>
+        <div class="cards">
+            <div class="card"><a href="#"><center><img src="img/p-withsecure.png" alt="withsecure" width="90%"></center><p>WithSecure</p></a></div>
+            <div class="card"><a href="#"><center><img src="img/p-bitdefender.png" alt="bitdefender" width="90%"></center><p>Bitdefender</p></a></div>
+            <div class="card"><a href="#"><center><img src="img/p-kaspersky.png" alt="kaspersky" width="90%"></center><p>Kaspersky</p></a></div>
+        </div>
+    </div>
+    <div class="section about">
+        <h2>Nosotros</h2>
+        <center><img src="img/about.svg" alt="Equipo" width="128px"></center>
+        <p>Nos dedicamos a brindarte la seguridad que necesitas en un mundo cada vez más conectado. En <strong>Bluebit</strong> sabemos que la protección de tus dispositivos y datos es fundamental, por eso ofrecemos <strong>licencias antivirus de las marcas más confiables y reconocidas del mercado.</strong></p> Gracias a nuestras alianzas estratégicas con los representantes de la marcas en el Perú, podemos ofrecerle precios muy competitivos y un servicio con experiencia de más de 10 años en el rubro.
+        <p>Ya sea para uso personal, empresarial o institucional, tenemos la solución perfecta para mantener tus sistemas libres de virus, malware, ransomware y otras amenazas cibernéticas.</p>
+    </div>
+    <div class="section cybersoc">
+        <h2>Nuestro Cybersoc</h2>
+        <center><img src="img/cybersoc.svg" alt="Equipo" width="128px"></center>
+        <p>La ciberseguridad no es un lujo, sino una necesidad en el mundo digital actual. Por eso, en nuestro Cybersoc (Centro de Operaciones de Seguridad Cibernética), tenemos profesionales altamente seleccionados que se encarga del <strong>monitoreo constante y centralizado</strong> de alertas para proteger a nuestros clientes las 24 horas del día, los 7 días de la semana.</p>
+        <h3>¿Cómo Funciona el Cybersoc?</h3>
+        <ul class="custom-list">
+            <li>Monitoreo Continuo: Utilizamos tecnologías avanzadas para supervisar tus redes, dispositivos y aplicaciones en busca de actividades sospechosas.</li>
+            <li>Detección de Amenazas: Nuestros sistemas identifican patrones anómalos y alertas de seguridad, desde intentos de phishing hasta malware avanzado.</li>
+            <li>Respuesta Inmediata: En caso de una amenaza, nuestro equipo actúa rápidamente para contenerla y mitigar su impacto.</li>
+            <li>Reportes y Análisis: Te proporcionamos informes detallados y recomendaciones para fortalecer tu postura de seguridad.</li>
+        </ul>
+    </div>
+    <!--boton whatspapp-->
+    <a href="http://wa.me/51933968878" target="_blank" class="float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <!--boton whatspapp-->
+    <footer>
+        <div class="contenedor">
+            <div class="celda">
+                <h3>Bluebit</h3>
+                <p>RUC: 10434208161<br>Lima, Perú</p>
+            </div>
+            <div class="celda">
+                <h3>CONTACTO</h3>
+                <p>989989989<br>contacto@bluebit.pe</p>
+            </div>
+            <div class="celda fila-mezclada"><hr style="border: 1px solid #333333;">© 2025 Bluebit.pe by Basilio Quispe<br>Todos los derechos reservados.</div>
+        </div>
+    </footer>
+    <script>
+        // Función para el menú hamburguesa
+        function toggleMenu() {
+            const menu = document.getElementById('menux');
+            menux.classList.toggle('active');
+        }
+        // Función para el menú hamburguesa
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        setInterval(nextSlide, 8000);
+    </script>
 </body>
 </html>
